@@ -1,0 +1,18 @@
+version: '3'
+services:
+  wine:
+    image: craigandrews/wine-adoptopenjdk:latest
+    entrypoint: java -jar /usr/myjar/my.jar
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./lib/sbojni.dll:/opt/openjdk-windows/bin/sbojni.dll
+      - ./lib/sbojc.sda:/opt/openjdk-windows/bin/sbojc.sda
+      - ./lib/SAPbobsCOM.dll:/opt/openjdk-windows/bin/SAPbobsCOM.dll
+      - ./:/usr/myjar
+      - ./lib/jacob-1.17-x64.dll:/root/.wine/drive_c/windows/system32/jacob-1.17-x64.dll
+      - ./lib/jacob-1.17-m2-x86.dll:/root/.wine/drive_c/windows/system32/jacob-1.17-m2-x86.dll
+      - ./lib/interop.SAPbouiCOM.dll:/root/.wine/drive_c/windows/system32/interop.SAPbouiCOM.dll
+      - ./lib/SAPbouiCOM.dll:/root/.wine/drive_c/windows/system32/SAPbouiCOM.dll
+      - ./lib/SAPbobsCOM.dll:/root/.wine/drive_c/windows/system32/SAPbobsCOM.dll
+
